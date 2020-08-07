@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+| register
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-ml-7 col-lg-4 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-header text-center bg-primary white-text">
+                    <h2>Register</h2>
+                </div>
+                <div class="card-body px-lg-5 pt-0 mt-5 mb-5">
+                    <form class="form-signin text-center" method="POST">
+                        {% csrf_token %}
+                        <div class="text-center">
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 wave-effect z-depth-0">Login</button>
+                    </form>
+                    <p class="text-dark text-center text-capitalize">have an account? create <a href="../login/" class="text-info">Here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

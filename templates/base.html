@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Diary</title>
+    <title>My Diary {% block title %}{% endblock title %}</title>
     <!-- bootstrap css -->
 
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
@@ -29,13 +29,12 @@
                     <a href="../my_todo/" class="nav-link">My Diary</a>
                 </li>
                 <li class="nav-item active">
+                    <a href="../my_todo/" class="nav-link">My Account</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link text-danger" href="../../../logout">Logout</a>
                 </li>
             </ul>
-            <form method="POST" class="form-inline my-2 my-lg-0">
-                <input type="search" name="search" id="" placeholder="Search...">
-                <button type="submit" class=" btn btn-outline-success my-2"></button>
-            </form>
         </div>
     </nav>
 
@@ -50,10 +49,10 @@
         <div class="collapse navbar-collapse mr-5" id="navbarNav">
             <ul class="navbar-nav ml-lg-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Login</a>
+                    <a class="nav-link" href="/login/">Login</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Register</a>
+                    <a class="nav-link" href="{% url 'home:register' %}">Register</a>
                 </li>
             </ul>
         </div>
@@ -62,11 +61,6 @@
 
     {% block content %}
     {% endblock content %}
-
-    <footer class="page-footer fixed-bottom bg-dark">
-        <div class="footer-copyrigth text-center py-3 text-white">&copy; 2020 copyrigth Zulfikar Ditya</div>
-    </footer>
-
     <!-- bootstrap js -->
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <!-- another js -->
