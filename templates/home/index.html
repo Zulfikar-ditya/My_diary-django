@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div class="container">
+    <div class="card text-center mt-5 mb-5">
+        <div class="card-header bg-info text-white">
+            My Diary
+        </div>
+        <div class="card-body">
+            <p class="card-text">a place for storing your diary every day, and every where</p>
+            <a href="" class="btn btn-outline-info wave-effect">Add Diary</a>
+            <a href="" class="btn btn-outline-info wave-effect">My Diary</a>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="card text-center mt-5 mb-5">
+        <div class="card-header bg-info text-white">
+            My Diary
+        </div>
+        <div class="card-body">
+            <p class="card-text">a place for storing your diary every day, and every where</p>
+            <a href="" class="btn btn-outline-info wave-effect">Login</a>
+            <a href="" class="btn btn-outline-info wave-effect">Register</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,77 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Diary</title>
+    <!-- bootstrap css -->
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+
+<body>
+
+    {% if request.user.is_authenticated %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 60px;">
+        <a class="navbar-brand ml-5" href="../../../">My ToDo List</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse mr-5" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-lg-auto">
+                <li class="nav-item active">
+                    <a href="{% url 'home:index' %}" class="nav-link">Add Diary</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="../my_todo/" class="nav-link">My Diary</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-danger" href="../../../logout">Logout</a>
+                </li>
+            </ul>
+            <form method="POST" class="form-inline my-2 my-lg-0">
+                <input type="search" name="search" id="" placeholder="Search...">
+                <button type="submit" class=" btn btn-outline-success my-2"></button>
+            </form>
+        </div>
+    </nav>
+
+    {% else %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 60px;">
+        <a class="navbar-brand ml-5" href="{% url 'home:index' %}">My ToDo List</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse mr-5" id="navbarNav">
+            <ul class="navbar-nav ml-lg-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% endif %}
+
+    {% block content %}
+    {% endblock content %}
+
+    <footer class="page-footer fixed-bottom bg-dark">
+        <div class="footer-copyrigth text-center py-3 text-white">&copy; 2020 copyrigth Zulfikar Ditya</div>
+    </footer>
+
+    <!-- bootstrap js -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- another js -->
+    <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+</body>
+
+</html>

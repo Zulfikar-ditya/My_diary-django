@@ -3,4 +3,4 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 
 def index(request):
-    return HttpResponse('Hello woorld')
+    return render(request, 'home/index.html')
