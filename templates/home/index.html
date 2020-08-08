@@ -11,8 +11,8 @@
         </div>
         <div class="card-body">
             <p class="card-text">a place for storing your diary every day, and every where</p>
-            <a href="" class="btn btn-outline-info wave-effect">Add Diary</a>
-            <a href="" class="btn btn-outline-info wave-effect">My Diary</a>
+            <a href="{% url 'diary:add_diary' %}" class="btn btn-outline-info wave-effect">Add Diary</a>
+            <a href="{% url 'diary:my_diary' %}" class="btn btn-outline-info wave-effect">My Diary</a>
         </div>
     </div>
 </div>

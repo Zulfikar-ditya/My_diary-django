@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+| edit | {{ diary.id}}
+
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-ml-7 col-lg-6 mx-auto">
+            <div class="card card-signin my-5">
+                {% if message is None %}
+                <div class="card-header text-center bg-primary white-text">
+                    <h2>edit</h2>
+                </div>
+                <div class="card-body px-lg-5 pt-0 mt-5 mb-5">
+                    <form class="text-center" method="POST">
+                        {% csrf_token %}
+                        <div class="md-form form-group">
+                            <label for="title">Title = <strong>{{ diary.title }}</strong></label>
+                            <input type="text" name="title" id="title" maxlength="50" class="form-control"
+                                placeholder="Title..." required>
+                        </div>
+                        <div class="md-form from-group">
+                            <label for="value">My Diary</label><br>
+                            <textarea name="value" id="value" cols="50" rows="10" placeholder="My Diary For Today..."
+                                maxlength="10000" required>{{ diary.value }}</textarea>
+                        </div>
+                        <button type="submit"
+                            class="btn btn-outline-info btn-rounded btn-block my-4 wave-effect z-depth-0">Submit</button>
+                    </form>
+                    <a href="../../detail/{{ diary.id }}/"
+                        class="btn btn-outline-danger btn-rounded btn-block my-4 wave-effect z-depth-0">cancel</a>
+                    {% else %}
+                    <div class="card-header card-header-cascade bg-primary">
+                        <h4 class="text-capitalize">{{ message }}</h4>
+                    </div>
+                    <div class="card-body card-body-cascade">
+                        <div class="card-text">
+                            <a href="{% url 'diary:add_diary' %}"
+                                class="btn btn-outline-info btn-rounded btn-block my-4 wave-effect z-depth-0">Add
+                                Diary</a>
+                            <a href="{% url 'diary:my_diary' %}"
+                                class="btn btn-outline-info btn-rounded btn-block my-4 wave-effect z-depth-0">My
+                                Diary</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

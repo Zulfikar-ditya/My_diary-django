@@ -23,5 +23,10 @@ def register(request):
 def you_are_loged_in(request):
     return render(request, 'home/logged_in.html')
 
+
+def you_are_not_loged_in(request):
+    return render(request, 'home/not_login_yet.html')
+
+
 def index(request):
     return render(request, 'home/index.html')

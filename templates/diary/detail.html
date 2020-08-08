@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+| detail/{{ diary.id }}/
+{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-9 col-ml-5 col-lg-6 mx-auto">
+            <div class="card card-cascade">
+                {% if massage is None and status_massage is None%}
+                <div class="card-header card-header-cascade bg-primary">
+                    <h4 class="text-capitalize">{{ diary.title }}</h4>
+                </div>
+                <div class="card-body card-body-cascade">
+                    <div class="card-title">
+                        <h5 class="text-primary">{{ diary.date_add }}</h5>
+                        <hr>
+                    </div>
+                    <div class="card-text">
+                        <p>{{ diary.value }}</p>
+                        <a href="../../edit/{{ diary.id }}/"
+                            class="btn btn-outline-info btn-rounded btn-block my-4 wave-effect z-depth-0">Edit</a>
+                        <a href="../../delete/{{ diary.id }}/"
+                            class="btn btn-outline-danger btn-rounded btn-block my-4 wave-effect z-depth-0">Delete</a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="card-header card-header-cascade bg-primary">
+                    <h4 class="text-capitalize">{{ massage }}</h4>
+                </div>
+                <div class="card-body card-body-cascade">
+                    <div class="card-text">
+                        <a href="{% url 'diary:add_diary' %}" class="btn btn-outline-info btn-rounded btn-block my-4 wave-effect z-depth-0">Add Diary</a>
+                        <a href="{% url 'diary:my_diary' %}" class="btn btn-outline-info btn-rounded btn-block my-4 wave-effect z-depth-0">My Diary</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
